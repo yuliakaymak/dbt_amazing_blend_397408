@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: project
+    schema: project
+    database: amazing-blend-397408
+    tables:
+      - name: fact_sales
+        description: "Contains events of sales. Main fact table."
+
+      - name: dim_sku
+        description: "Dictionary of SKU."
+
+      - name: dim_employees
+        description: "Dictionary of employees."
+
+      - name: dim_locations
+        description: "Dictionary of all locations where our company has been performing (incl. closed and open locations)."
+
+      - name: dim_prices
+        description: "Contains historical data of prices relevant for SKUs in a different period of time."
+
+      - name: dim_discounts
+        description: "Contains historical data of discounts relevant for SKUs in a different period of time." 

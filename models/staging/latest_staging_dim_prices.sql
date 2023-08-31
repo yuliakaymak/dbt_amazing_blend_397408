@@ -1,0 +1,1 @@
+{{latest_staging_snapshot(ref('staging_dim_prices'), 'valid_to', 'sku_id', columns = "sku_id, regular_price, valid_from, valid_to")}}

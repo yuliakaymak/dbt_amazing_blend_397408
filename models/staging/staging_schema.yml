@@ -1,0 +1,32 @@
+
+version: 2
+
+models:
+  - name: staging_dim_locations
+    description: "Dictionary of all locations where our company has been performing (incl. closed and open locations)."
+    columns:
+      - name: location_id
+        tests:
+          - not_null
+          - unique
+      - name: region
+        tests: 
+          - not_null
+      - name: country
+        tests: 
+          - not_null
+      - name: city
+        tests: 
+          - not_null
+
+
+  - name: staging_dim_sku
+    description: "Dictionary of SKU."
+
+  - name: staging_dim_employees
+  - name: staging_dim_prices
+  - name: latest_staging_dim_prices
+  - name: staging_dim_discounts
+  - name: latest_staging_dim_discounts
+  - name: staging_fact_sales_enriched
+
