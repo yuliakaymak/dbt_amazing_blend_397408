@@ -16,8 +16,8 @@ region,
 country, 
 city,
 count(sales_id) as sales_count, 
-sum(regular_price) as sum_regular_price, 
-sum(price_after_discount) as price_after_discount
+sum(regular_price) as sum_revenue_regular_price, 
+sum(price_after_discount) as sum_revenue_after_discount
 from prepared_table
 group by 
 start_month, 

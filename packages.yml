@@ -1,0 +1,22 @@
+packages:
+# IMPORTANT!!!!
+# Once you change this file - please go and update ANALYTICS_DATA_IMAGE_VER in .gitlab-ci.yml in the root folder!
+
+# Note Git based dependencies are managed very poorly in dbt - so most likely updating dbt-utils will require releasing all usages as well. SN has a script for an automated release
+  - git: "https://github.com/SOVALINUX/athena-utils"
+    revision: 0.4.101
+  - git: "https://github.com/SOVALINUX/dbt-utils"
+    revision: 1.1.101
+  - git: "https://github.com/SOVALINUX/dbt-codegen"
+    revision: 0.6.101
+  - git: "https://github.com/SOVALINUX/dbt-unit-testing"
+    revision: 0.2.106
+  - git: "https://github.com/krisstinkou/dbt-unit-testing-date-utils"
+    revision: 0.1.0
+#  - git: "https://github.com/SOVALINUX/dbt-re-data"
+#    revision: 0.8.6
+# dbt-date looks like not needed yet
+#  - git: https://github.com/SOVALINUX/dbt-date
+#    revision: v0.5.1
+  - package: calogica/dbt_expectations
+    version: [">=0.8.0", "<0.9.0"]

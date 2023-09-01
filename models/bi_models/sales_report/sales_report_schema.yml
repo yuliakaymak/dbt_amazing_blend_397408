@@ -1,0 +1,60 @@
+
+version: 2
+
+models:
+  - name: sales_by_month_and_employee
+    description: "Pivot data of sales with granularity month - sales_repr_id."
+    tests: 
+      - test_no_duplicates_in_group_of_columns:
+          group_by_column: "start_month, sales_repr_id"
+    # columns:
+    #   - name: start_month
+    #     tests:
+    #       - not_null
+    #   - name: sales_repr_id
+    #     tests: 
+    #       - not_null
+    #   - name: full_name
+    #     tests: 
+    #       - not_null
+    #   - name: sales_count
+    #     tests: 
+    #       - not_null
+
+  - name: sales_by_month_category_segment
+    description: "Pivot data of sales with granularity month - sku_category - sku_price_segment."
+    tests: 
+      - test_no_duplicates_in_group_of_columns:
+          group_by_column: "start_month, sku_category, sku_price_segment"
+    # columns:
+    #   - name: start_month
+    #     tests:
+    #       - not_null
+    #   - name: sku_category
+    #     tests: 
+    #       - not_null
+    #   - name: sku_price_segment
+    #     tests: 
+    #       - not_null
+    #   - name: sales_count
+    #     tests: 
+    #       - not_null
+
+  - name: sales_by_month_with_discounts_applied
+    description: "Data from source staging_fact_sales_enriched pivotted by month with price_after_discount calculated."
+    tests: 
+      - test_expression_is_true:
+          expression: "sum_revenue_regular_price >= sum_revenue_after_discount"
+    # columns:
+    #   - name: start_month
+    #     tests:
+    #       - not_null
+    #   - name: sales_repr_id
+    #     tests: 
+    #       - not_null
+    #   - name: full_name
+    #     tests: 
+    #       - not_null
+    #   - name: sales_count
+    #     tests: 
+    #       - not_null

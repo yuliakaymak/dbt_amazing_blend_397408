@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -24,9 +23,36 @@ models:
     description: "Dictionary of SKU."
 
   - name: staging_dim_employees
+    description: "Dictionary of employees."
+
   - name: staging_dim_prices
+    description: "Contains historical data of prices relevant for SKUs in a different period of time."
+    tests: 
+      - test_expression_is_true:
+          expression: "valid_from <= valid_to"
+      - test_no_duplicates_in_group_of_columns:
+          group_by_column: "sku_id, valid_from"
+      - test_no_duplicates_in_group_of_columns:
+          group_by_column: "sku_id, valid_to"  
+    columns: 
+      - name: regular_price 
+        tests: 
+          - not_null
+
   - name: latest_staging_dim_prices
+    description: "Snapshot of staging_dim_prices which represents the latest row by sku_id."
+    columns: 
+      - name: sku_id
+        tests: 
+          - not_null
+          - unique
+
+  # ------
   - name: staging_dim_discounts
+
   - name: latest_staging_dim_discounts
+
   - name: staging_fact_sales_enriched
+    # config:
+    #   materialized: table
 
