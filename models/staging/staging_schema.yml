@@ -53,6 +53,6 @@ models:
   - name: latest_staging_dim_discounts
 
   - name: staging_fact_sales_enriched
-    # config:
-    #   materialized: table
+    config:
+      materialized: table
 
